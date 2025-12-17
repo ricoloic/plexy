@@ -47,7 +47,7 @@
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.468.0",
-    "next": "14.2.16",
+    "next": "14.2.35",
     "next-themes": "^0.4.4",
     "prettier": "^3.4.2",
     "qs": "^6.13.1",
