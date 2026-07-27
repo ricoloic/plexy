@@ -150,11 +150,22 @@ export class Api {
   static async pin(props: { uuid: string }) {
     return axios.post<{ id: number; code: string }>(
       `https://plex.tv/api/v2/pins?X-Plex-Client-Identifier=${props.uuid}&X-Plex-Product=${PLEX.application}&strong=true`,
+      undefined,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      },
     );
   }
   static async token(props: { pin: string; uuid: string }) {
     return axios.get<{ authToken: string }>(
       `https://plex.tv/api/v2/pins/${props.pin}?X-Plex-Client-Identifier=${props.uuid}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      },
     );
   }
   static async users() {
@@ -194,11 +205,21 @@ export class Api {
         includeIPv6: 1,
         ...xprops(localStorage.getItem("auth-token")),
       })}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      },
     );
   }
   static async user({ token, uuid }: { token: string; uuid: string }) {
     return axios.get<Plex.UserData>(
       `https://plex.tv/api/v2/user?X-Plex-Token=${token}&X-Plex-Product=${PLEX.application}&X-Plex-Client-Identifier=${uuid}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      },
     );
   }
 }

@@ -79,7 +79,7 @@ export async function fetchLibraries(
 
 export async function fetchAvailableServers() {
   return Api.servers().then(async (res) => {
-    let list = res.data || [];
+    let list = Array.isArray(res.data) ? res.data : [];
 
     // remove the server with no connections or no accessToken from the list
     for (let i = list.length - 1; i >= 0; i--) {
@@ -117,7 +117,7 @@ export async function fetchExistingServer(currentConnectionUri: string) {
   return currentConnectionUri
     ? Api.servers()
         .then((res) => {
-          let list = res.data || [];
+          let list = Array.isArray(res.data) ? res.data : [];
 
           let connected: PlexServer | null = null;
 
